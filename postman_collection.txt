@@ -1,0 +1,41 @@
+{
+  "info": { "name": "Triton Embeddings", "_postman_id": "triton-emb", "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json" },
+  "item": [
+    {
+      "name": "all-mpnet-base-v2 infer",
+      "request": {
+        "method": "POST",
+        "header": [ { "key": "Content-Type", "value": "application/json" } ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"inputs\":[{\"name\":\"text_input\",\"shape\":[1,1],\"datatype\":\"BYTES\",\"data\":[\"What is AI?\"]}]\n}"
+        },
+        "url": { "raw": "http://localhost:8000/v2/models/all-mpnet-base-v2/infer", "protocol": "http", "host": ["localhost"], "port":"8000", "path":["v2","models","all-mpnet-base-v2","infer"] }
+      }
+    },
+    {
+      "name": "all-MiniLM-L6-v2 infer",
+      "request": {
+        "method": "POST",
+        "header": [ { "key": "Content-Type", "value": "application/json" } ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"inputs\":[{\"name\":\"text_input\",\"shape\":[1,1],\"datatype\":\"BYTES\",\"data\":[\"How to fine tune embeddings?\"]}]\n}"
+        },
+        "url": { "raw": "http://localhost:8000/v2/models/all-MiniLM-L6-v2/infer", "protocol": "http", "host": ["localhost"], "port":"8000", "path":["v2","models","all-MiniLM-L6-v2","infer"] }
+      }
+    },
+    {
+      "name": "sentence-transformers_xx infer",
+      "request": {
+        "method": "POST",
+        "header": [ { "key": "Content-Type", "value": "application/json" } ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"inputs\":[{\"name\":\"text_input\",\"shape\":[1,1],\"datatype\":\"BYTES\",\"data\":[\"Find similar docs\"]}]\n}"
+        },
+        "url": { "raw": "http://localhost:8000/v2/models/sentence-transformers_xx/infer", "protocol": "http", "host": ["localhost"], "port":"8000", "path":["v2","models","sentence-transformers_xx","infer"] }
+      }
+    }
+  ]
+}

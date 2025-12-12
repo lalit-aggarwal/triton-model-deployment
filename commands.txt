@@ -1,0 +1,50 @@
+docker run --rm -it \
+  --platform linux/amd64 \
+  -p8000:8000 -p8001:8001 -p8002:8002 \
+  -v "${PWD}/model_repository:/opt/tritonserver/model_repository" \
+  triton-embed:local \
+  --model-repository=/opt/tritonserver/model_repository
+
+
+
+curl -X POST http://localhost:8000/v2/models/llm_answer/infer \
+-H "Content-Type: application/json" \
+-d '{
+  "inputs": [
+    {
+      "name": "PROMPT",
+      "datatype": "BYTES",
+      "shape": [1,1],
+      "data": ["Answer the question: What is the captial of America?"]
+    }
+  ],
+  "outputs": [{"name": "OUTPUT"}]
+}'
+
+curl -X POST http://localhost:8000/v2/models/bge_small_en/infer \
+-H "Content-Type: application/json" \
+-d '{
+  "inputs": [
+    {
+      "name": "INPUT", 
+      "datatype": "BYTES",
+      "shape": [1,1],
+      "data": ["hello world"]                                         
+    }
+  ],
+  "outputs": [{"name": "OUTPUT"}]
+}'
+
+curl -X POST http://localhost:8000/v2/models/all_minilm_l6_v2/infer \
+-H "Content-Type: application/json" \
+-d '{
+  "inputs": [
+    {
+      "name": "INPUT", 
+      "datatype": "BYTES",
+      "shape": [1,1],
+      "data": ["hello world"]                                         
+    }
+  ],
+  "outputs": [{"name": "OUTPUT"}]
+}'
